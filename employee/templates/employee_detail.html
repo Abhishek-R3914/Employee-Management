@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <!-- Header -->
+                <div class="card-header bg-primary text-white text-center py-4 rounded-top-4">
+
+                    <h2 class="fw-bold mb-0">
+                        Employee Details
+                    </h2>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-5">
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4 fw-bold text-secondary">
+                            Employee ID
+                        </div>
+
+                        <div class="col-md-8">
+                            {{ employee.id }}
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4 fw-bold text-secondary">
+                            Name
+                        </div>
+
+                        <div class="col-md-8">
+                            {{ employee.name }}
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4 fw-bold text-secondary">
+                            Email
+                        </div>
+
+                        <div class="col-md-8">
+                            {{ employee.email }}
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4 fw-bold text-secondary">
+                            Department
+                        </div>
+
+                        <div class="col-md-8">
+                            {{ employee.department }}
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4 fw-bold text-secondary">
+                            Salary
+                        </div>
+
+                        <div class="col-md-8">
+                            ₹ {{ employee.salary }}
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-4">
+
+                        <div class="col-md-4 fw-bold text-secondary">
+                            Status
+                        </div>
+
+                        <div class="col-md-8">
+
+                            {% if employee.status == 'Active' %}
+
+                                <span class="badge bg-success px-4 py-2 fs-6">
+                                    {{ employee.status }}
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge bg-danger px-4 py-2 fs-6">
+                                    {{ employee.status }}
+                                </span>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="text-center mt-5">
+
+                        <a href="{% url 'employee_list' %}"
+                           class="btn btn-secondary px-4 py-2 me-2">
+
+                            Back
+
+                        </a>
+
+                        <a href="{% url 'edit_employee' id=employee.id %}"
+                           class="btn btn-warning px-4 py-2 me-2 text-white">
+
+                            Edit
+
+                        </a>
+
+                        <a href="{% url 'delete_employee' id=employee.id %}"
+                           class="btn btn-danger px-4 py-2">
+
+                            Delete
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

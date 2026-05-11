@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8 col-lg-6">
+
+            <div class="card shadow-lg border-0 rounded-4">
+
+                <!-- Header -->
+                <div class="card-header text-center text-white py-4 rounded-top-4"
+                     style="background: linear-gradient(135deg, #0d6efd, #6610f2);">
+
+                    <h2 class="fw-bold mb-0">
+                        Edit Employee
+                    </h2>
+
+                    <p class="mb-0 mt-2">
+                        Update employee information
+                    </p>
+
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-5">
+
+                    <form method="post">
+
+                        {% csrf_token %}
+
+                        {{ form|crispy }}
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-center gap-3 mt-4">
+
+                            <button type="submit"
+                                    class="btn btn-primary btn-lg px-4 text-white shadow-sm">
+
+                                Update Employee
+
+                            </button>
+
+                            <a href="{% url 'employee_list' %}"
+                               class="btn btn-secondary btn-lg px-4 shadow-sm">
+
+                                Cancel
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

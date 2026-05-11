@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card shadow-lg border-0 rounded-4">
+
+        <div class="card-header bg-success text-white text-center rounded-top-4">
+            <h2 class="mb-0">Active Employees</h2>
+        </div>
+
+        <div class="card-body">
+
+            {% if employee %}
+
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered align-middle text-center">
+
+                    <thead class="table-success">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Salary</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        {% for employee in employee %}
+                        <tr>
+                            <td>{{ employee.id }}</td>
+                            <td>{{ employee.name }}</td>
+                            <td>{{ employee.email }}</td>
+                            <td>{{ employee.department }}</td>
+                            <td>₹ {{ employee.salary }}</td>
+
+                            <td>
+                                <span class="badge bg-success px-3 py-2">
+                                    {{ employee.status }}
+                                </span>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+            </div>
+
+            {% else %}
+
+            <div class="alert alert-warning text-center">
+                No Active Employees Found
+            </div>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

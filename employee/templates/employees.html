@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container py-4">
+
+    <h1 class="text-center mb-4">
+        Employee List
+    </h1>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-body">
+
+            <!-- 🔥 Responsive wrapper -->
+            <div class="table-responsive">
+
+                <table class="table table-bordered table-hover align-middle text-center">
+
+                    <thead class="table-primary">
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Salary</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for employee in employee %}
+
+                        <tr>
+
+                            <td>{{ employee.id }}</td>
+                            <td class="fw-semibold">{{ employee.name }}</td>
+                            <td>{{ employee.email }}</td>
+                            <td>{{ employee.department }}</td>
+                            <td>{{ employee.salary }}</td>
+
+                            <td>
+                                {% if employee.status == "Active" %}
+                                    <span class="badge bg-success">Active</span>
+                                {% else %}
+                                    <span class="badge bg-danger">Inactive</span>
+                                {% endif %}
+                            </td>
+
+                            <td class="text-nowrap">
+
+                                <a href="{% url 'employee_detail' id=employee.id %}"
+                                   class="btn btn-info btn-sm text-white mb-1 mb-md-0">
+
+                                    View
+
+                                </a>
+
+                                <a href="{% url 'edit_employee' id=employee.id %}"
+                                   class="btn btn-success btn-sm mb-1 mb-md-0">
+
+                                    Edit
+
+                                </a>
+
+                                <a href="{% url 'delete_employee' id=employee.id %}"
+                                   class="btn btn-danger btn-sm">
+
+                                    Delete
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
